@@ -6,17 +6,25 @@ namespace BFWpf.Models.Config
 {
     public class ConfigFactory
     {
-        public BFCommandConfig Create()
+        public T Create<T>()
         {
-            var file = new FileInfo(Path.Combine(Environment.CurrentDirectory, $"{nameof(BFCommandConfig)}.json"));
+            var name = typeof(T).Name;
+
+            if (!(typeof(T) == typeof(CommonConfig) || typeof(T) == typeof(BFCommandConfig)))
+            {
+                throw new Exception($"{name} is not approved type.");
+            }
+
+
+            var file = new FileInfo(Path.Combine(Environment.CurrentDirectory, $"{name}.json"));
 
             if (file.Exists)
             {
-                return ConfigManager.Import<BFCommandConfig>(file);
+                return ConfigManager.Import<T>(file);
             }
             else
             {
-                return new BFCommandConfig();
+                return (T)typeof(T).GetConstructor(Type.EmptyTypes).Invoke(null);
             }
         }
     }

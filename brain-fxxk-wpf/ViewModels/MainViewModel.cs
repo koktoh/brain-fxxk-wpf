@@ -1,4 +1,5 @@
-﻿using BFWpf.Models.Config;
+﻿using BFCore.Config;
+using BFWpf.Models.Config;
 using BFWpf.Models.Execute;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -31,7 +32,7 @@ namespace BFWpf.ViewModels
             this.RunCommand = new DelegateCommand(Execute);
 
             var factory = new ConfigFactory();
-            this._executer = new Executer(factory.Create());
+            this._executer = new Executer(factory.Create<CommonConfig>(), factory.Create<BFCommandConfig>());
         }
 
         public void Execute()
