@@ -7,7 +7,7 @@ namespace BFWpf.Models.Execute
     {
         public string Output { get; private set; }
 
-        public Executer(BFCommandConfig config) : base(config) { }
+        public Executer(CommonConfig config, BFCommandConfig commandConfig) : base(config, commandConfig) { }
 
         protected override void Read()
         {
@@ -21,10 +21,6 @@ namespace BFWpf.Models.Execute
         public void Reset()
         {
             this.Output = string.Empty;
-
-            this._index = 0;
-
-            this._memory = new int[this._memory.Length];
         }
     }
 }
