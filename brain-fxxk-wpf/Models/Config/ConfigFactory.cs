@@ -20,7 +20,7 @@ namespace BFWpf.Models.Config
 
             if (file.Exists)
             {
-                return ConfigManager.Import<T>(file);
+                return ConfigManager.Import<T>(file.OpenRead());
             }
             else
             {
