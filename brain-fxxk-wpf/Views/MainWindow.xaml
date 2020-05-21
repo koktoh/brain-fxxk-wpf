@@ -6,7 +6,7 @@
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
-        Title="Brain Fxxk Interpreter" Height="450" Width="800" WindowStyle="SingleBorderWindow">
+        Title="Brainfxxk Interpreter" Height="450" Width="800" WindowStyle="SingleBorderWindow">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
